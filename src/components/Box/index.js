@@ -35,6 +35,11 @@ const Box = styled.div`
     border-color: transparent;
     border-bottom-color: #ECF2FA;
   }
+
+  label {
+    font-size: 14px;
+    color:#308BC5;
+  }
   input {
     width: 100%;
     background-color: #F4F4F4;
@@ -42,6 +47,7 @@ const Box = styled.div`
     border: 0;
     padding: 14px 16px;
     margin-bottom: 14px;
+    margin-top:0.5rem;
     border-radius: 10000px;
     ::placeholder {
       color: #333333;
@@ -53,7 +59,7 @@ const Box = styled.div`
     padding: 8px 12px;
     color: #FFFFFF;
     border-radius: 10000px;
-    background-color: #6F92BB;
+    background-color: #D81D99;
   }
 `; 
 
