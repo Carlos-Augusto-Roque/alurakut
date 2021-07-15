@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import GithubApi from '../src/services/GithubApi'
+import GraphQLApi from '../src/services/GraphQLApi'
 import MainGrid from '../src/components/MainGrid'
 import Box from '../src/components/Box'
 import { 
@@ -47,32 +48,70 @@ export default function Home() {
   // constante que recebe quem o usuário está seguindo no github
   const [following, setFollowing] = useState([])  
   // constante que recebe as comunidades
-  const [communities,setCommunities] = useState([    
-    {id: '1',title: 'Eu odeio acordar cedo',image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg'},
-    {id: '2',title: 'Queremos Yakut 2 Litros',image: 'https://img10.orkut.br.com/community/543e2091b6a00799f961b5560157011e.jpg'},    
-    {id: '4',title: 'League Of Legends',image: 'https://img10.orkut.br.com/community/04381570741a2874e15c367d96a7a133.jpg'},
-    {id: '5',title: 'Adoro FDS',image: 'https://img10.orkut.br.com/community/8874c6584f3e2d6cbb24e96c44b51333.jpg'},
-    {id: '6',title: 'Galo cego o MITO',image: 'https://img10.orkut.br.com/community/d0a1a7a69ab7204d82fd396031a1394c.jpg'},
-  ])  
+  const [communities,setCommunities] = useState([])  
 
   //=======================================
 
   // função para criar uma comunidade
   function handleCreateCommunity(event){    
     event.preventDefault();    
-    const formData = new FormData(event.target)    
-    const community = {
-      id: new Date().toISOString(),
+    const formData = new FormData(event.target)  
+
+    const community = {      
       title: formData.get('title'),
-      image: formData.get('image'),
-      link: formData.get('link')          
-    }    
-    setCommunities([...communities, community])    
+      imageUrl: formData.get('image'),
+      creatorSlug: githubUser,          
+    }          
+    
+    fetch('/api/communities', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(community)
+    })
+    .then(async (response) => {
+      const dados = await response.json();
+      const communityNew = dados.registerCreated;
+      const updatedCommunities = [communityNew, ...communities];
+      setCommunities(updatedCommunities);
+    })
   }
+  
+  //=======================================
+
+  // ciclo de vida para a listagem das comunidades cadastradas no DatoCMS
+  useEffect(() => {
+    // chamada para a API do DatoCMS
+    fetch(`https://graphql.datocms.com/`, {
+      method: 'POST',
+      headers: {
+        'Authorization': '6d2569e410f86a191a964cf0cd403b',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({ "query": `query {
+        allCommunities{
+          title
+          id
+          imageUrl
+          creatorSlug
+        }
+      }`})
+    })
+
+    .then((res) => res.json())
+    .then((res) => {     
+      setCommunities(res.data.allCommunities) 
+      console.log(res)
+    })
+  },[])
+  
+
 
   //=======================================
   
-  // ciclos de vida 
+  // ciclos de vida para trazer os seguidores e os que o usuário está seguindo
   useEffect(() => {    
     GithubApi.getFollowers(githubUser).then((res) => {
       setFollowers(res);
@@ -80,7 +119,11 @@ export default function Home() {
     GithubApi.getFollowing(githubUser).then((res) => {
       setFollowing(res);
     });
-  }, [githubUser]);  
+
+    
+  }, [githubUser]);
+  
+  
 
   //=======================================
 
@@ -121,17 +164,11 @@ export default function Home() {
               </div>
               <div>
                 <label className="label">Imagem</label>
-                <input placeholder="URL da imagem para capa"
+                <input placeholder="Insira a Url da imagem"
                       name="image"                      
-                      type="file"                                           
+                      type="text"                                         
                       />
-              </div>
-              <div>
-                <label className="label">Link</label>
-                <input placeholder="insira um link para sua nova comunidade"
-                      name="link"                                                            
-                      />
-              </div>
+              </div>            
 
               <button>
                   Criar comunidade

@@ -58,6 +58,8 @@ AlurakutMenu.Wrapper = styled.header`
   .alurakutMenuProfileSidebar {
     background: white;
     position: fixed;
+    /* Overflow para quando a tela tiver com zoom no celular */
+    overflow-y: scroll;
     z-index: 100;
     padding: 46px;
     bottom: 0;
