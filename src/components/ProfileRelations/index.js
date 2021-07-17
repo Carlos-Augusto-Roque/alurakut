@@ -7,7 +7,7 @@ export const ProfileRelationsBoxWrapper = styled(Box)`
     grid-gap: 8px;
     grid-template-columns: 1fr 1fr 1fr; 
     max-height: 220px;
-    list-style: none;
+    list-style: none;    
   }
   img {
     object-fit: cover;
@@ -21,10 +21,11 @@ export const ProfileRelationsBoxWrapper = styled(Box)`
     height: 102px;
     position: relative;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 8px;    
     span {
-      color: #FFFFFF;
-      font-size: 10px;
+      color: hsl(214, 13%, 20%);
+      font-size: 12px;
+      color:#FFF;
       position: absolute;
       left: 0;
       bottom: 10px;

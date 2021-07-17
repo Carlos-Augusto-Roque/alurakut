@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {  
     font-family: sans-serif;
-    background-color: #d9e6f6;    
+    background-color: hsl(215, 15%, 16%);    
   }
 
   #__next {

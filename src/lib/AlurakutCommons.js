@@ -54,7 +54,7 @@ export function AlurakutMenu({ githubUser }) {
 }
 AlurakutMenu.Wrapper = styled.header`
   width: 100%;
-  background-color: #308BC5;
+  background-color: hsl(214, 13%, 20%);
   .alurakutMenuProfileSidebar {
     background: white;
     position: fixed;
@@ -95,7 +95,7 @@ AlurakutMenu.Wrapper = styled.header`
     }
   }
   .container {
-    background-color: #308BC5;
+    background-color: hsl(214, 13%, 20%);
     padding: 7px 16px;
     max-width: 1110px;
     margin: auto;
@@ -126,6 +126,7 @@ AlurakutMenu.Wrapper = styled.header`
         padding: 10px 16px;
         position: relative;
         text-decoration: none;
+        margin-left: 2rem;
         &:after {
           content: " ";
           background-color: #5292C1;
@@ -142,9 +143,10 @@ AlurakutMenu.Wrapper = styled.header`
     }
     input {
       color: #ffffff;
-      background: #5579A1;
+      background: hsl(214, 13%, 20%);
       padding: 10px 42px;
-      border: 0;
+      border: .5;
+      border-color:#D81D99;
       background-image: url(${`${BASE_URL}/icons/search.svg`});
       background-position: 15px center;
       background-repeat: no-repeat;
@@ -160,7 +162,7 @@ AlurakutMenu.Wrapper = styled.header`
 AlurakutMenu.Logo = styled.img`
   background-color: #ffffff;
   padding: 9px 14px;
-  border-radius: 1000px;
+  border-radius: 1000px;  
   height: 34px;
 `;
 
@@ -224,7 +226,7 @@ export function AlurakutProfileSidebarMenuDefault() {
 AlurakutProfileSidebarMenuDefault.Wrapper = styled.div`
   a {
     font-size: 12px;
-    color: #2E7BB4;
+    color: #FFF;
     margin-bottom: 16px;
     display: flex;
     align-items: center;
@@ -292,7 +294,7 @@ OrkutNostalgicIconSet.List = styled.ul`
   flex-wrap: wrap;
   li {
     font-size: 12px;
-    color: #5A5A5A;
+    color: #FFF;
     display: grid;
     grid-template-areas:
       "title title"
@@ -356,7 +358,7 @@ const AlurakutLoginScreen = css`
     }
     .logoArea {
       grid-area: logoArea;
-      background-color: var(--backgroundTertiary);
+      background-color: #2d333b;
       border-radius: var(--commonRadius);
       padding: var(--gutter);
       text-align: center;
@@ -372,6 +374,7 @@ const AlurakutLoginScreen = css`
       p {
         font-size: 12px;
         line-height: 1.2;
+        color:#539bf5;
         &:not(:last-child) {
           margin-bottom: 12px;
         }
@@ -398,7 +401,7 @@ const AlurakutLoginScreen = css`
         padding: var(--gutter);
         padding-left: 50px;
         padding-right: 50px;
-        background-color: var(--backgroundSecondary);
+        background-color: #2d333b;
         border-radius: var(--commonRadius);
         flex: 1;
         &:not(:last-child) {
@@ -412,17 +415,19 @@ const AlurakutLoginScreen = css`
         }
         p {
           font-size: 14px;
+          color:#539bf5;
         }
         a {
           text-decoration: none;
-          color: var(--colorPrimary);
+          color: #D81D99;
         }
         input {
           width: 100%;
           display: block;
           border: 1px solid var(--textQuarternaryColor);
           padding: 12px;
-          background-color: var(--backgroundTertiary);
+          background-color: #FFFFFF90;
+          color: #333333;
           border-radius: var(--commonRadius);
           margin-top: 24px;
           margin-bottom: 16px;
@@ -433,25 +438,37 @@ const AlurakutLoginScreen = css`
           border: 0;
           padding: 12px;
           border-radius: var(--commonRadius);
-          background-color: var(--colorPrimary);
+          background-color: #D81D99;
           color: var(--textSecondaryColor);
         }
       }
     }
     .footerArea {
       grid-area: footerArea;
-      background-color: var(--backgroundQuarternary);
+      background-color: #2d333b;
       border-radius: var(--commonRadius);
       padding: 8px;
+      color: #539bf5;
       p {
         font-size: 12px;
         text-align: center;
+        
         a {
           text-decoration: none;
-          color: var(--colorPrimary);
+          color: #539bf5;
         }
       }
     }
+
+    #span-campo {
+    color: #539bf5;
+    margin-bottom: 1rem;
+    font-size: 12px;    
+  }
+
+  #strong-git {
+    color:#D81D99;
+  }
   }
 `;
 

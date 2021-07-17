@@ -7,7 +7,7 @@ export function CommunitiesList({ communities}) {
       </h2>
 
       <ul>
-        {communities.map((c) => {
+        {communities.slice(0,6).map((c) => {
           return (
             <li key={c.id}>
               <a href={`/communities/${c.id}`}>

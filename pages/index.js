@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import GithubApi from '../src/services/GithubApi'
-import GraphQLApi from '../src/services/GraphQLApi'
+import nookies from 'nookies'
+import jwt from 'jsonwebtoken'
 import MainGrid from '../src/components/MainGrid'
 import Box from '../src/components/Box'
 import { 
@@ -39,10 +40,10 @@ function ProfileSidebar({ githubUser}) {
 //=======================================
 
 //função geral para a página Home
-export default function Home() { 
+export default function Home(props) { 
 
   // constante que recebe o usename do github
-  const githubUser = 'Carlos-Augusto-Roque'
+  const githubUser = props.githubUser
   // constante que recebe a lista de seguidores do github
   const [followers, setFollowers] = useState([])  
   // constante que recebe quem o usuário está seguindo no github
@@ -201,3 +202,31 @@ export default function Home() {
     </>
   )
 }
+
+// validação do login no servidor
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context)
+  const token = cookies.USER_TOKEN
+  const { isAuthenticated } = await fetch("http://localhost:3000/api/auth", {
+    headers: {
+      Authorization: token,
+    },
+  })
+  .then((resposta) => resposta.json())  
+  
+  if(!isAuthenticated) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      }
+    }
+  }
+
+  const { githubUser } = jwt.decode(token);
+  return {
+    props: {
+      githubUser
+    }, // will be passed to the page component as props
+  }
+} 
