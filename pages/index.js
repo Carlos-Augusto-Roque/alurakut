@@ -207,7 +207,7 @@ export default function Home(props) {
 export async function getServerSideProps(context) {
   const cookies = nookies.get(context)
   const token = cookies.USER_TOKEN
-  const { isAuthenticated } = await fetch("https://vercel.com/carlos-augusto-roque/alurakut/A4kK6nXb655UGJ6VskKc3s3JcEv7/api/auth", {
+  const { isAuthenticated } = await fetch("https://alurakut-cya2u02md-carlos-augusto-roque.vercel.app/api/auth", {
     headers: {
       Authorization: token,
     },
