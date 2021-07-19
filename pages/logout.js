@@ -1,7 +1,7 @@
 import nookies from 'nookies';
 
 export default function Logout() {
-    return <div>Logout</div>
+    return ""
 }
 
 export async function getServerSideProps(context) {

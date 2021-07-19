@@ -25,6 +25,14 @@ export default {
     })
   
     );
-  },
-  
+  },  
 };
+
+export async function getUser(githubUser) {
+  return fetch (`https://api.github.com/users/${githubUser}`)
+}
+
+export async function userExists(githubUser){
+  const response = await getUser(githubUser)
+    return response.ok
+}

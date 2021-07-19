@@ -3,11 +3,16 @@ import React from 'react';
 import { useRouter } from 'next/router'
 import nookies from 'nookies'
 import { useState } from 'react'
+import {userExists} from '../src/services/GithubApi'
 
 export default function LoginScreen() {
 
   const router = useRouter()
-  const [githubUser, setGithubUser] = useState('Carlos-Augusto-Roque')
+
+  const [model, setModel] = useState({
+    githubUser: 'Carlos-Augusto-Roque',
+    error: ''
+  }) 
 
   return (
     <main style={{ display: 'flex', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -21,18 +26,24 @@ export default function LoginScreen() {
         </section>
 
         <section className="formArea">
-          <form className="box" onSubmit={(event) => {
+          <form className="box" onSubmit={async(event) => {
               event.preventDefault()
-              console.log('Usuário: ', githubUser)
-              fetch('https://alurakut.vercel.app/api/login',{
+              // console.log('Usuário: ', githubUser)
+              const userValid = await userExists(model.githubUser)
+
+              if (!userValid) {
+                setModel({...model, error: `Usuário ${model.githubUser} não encontrado!`})
+                    return
+              }
+              const response = await fetch('https://alurakut.vercel.app/api/login',{
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({githubUser: githubUser})
+                body: JSON.stringify({githubUser: model.githubUser})
               })
-              .then(async (responseServer) => {
-                const dados = await responseServer.json()
+              .then(async (response) => {
+                const dados = await response.json()
                 const token = dados.token
                 nookies.set(null,'USER_TOKEN', token, {
                   path: '/',
@@ -46,18 +57,19 @@ export default function LoginScreen() {
             </p>
             <input
               placeholder="Usuário"
-              value={githubUser}
+              value={model.githubUser}
               onChange={(event) => {
-                  setGithubUser(event.target.value)             
+                  setModel({...model, githubUser: event.target.value})             
               }}    
             />
-            {githubUser.length === 0
+            {model.githubUser.length === 0
               ? <span id="span-campo">Preencha o campo !</span>
               : ''
             }
+            <span style={{color: "yellow"}}>{model.error}</span>
             <button type="submit">
               Login
-          </button>
+            </button>
           </form>
 
           <footer className="box">
