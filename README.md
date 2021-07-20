@@ -16,7 +16,7 @@ Para logar , o usuário deve utilizar o seu username do GitHub e será direciona
 - Fazer login com o username do GitHub.
 
 <p align="center">
-  <img alt="Cadastro" src=".prints/login.png" width="100%">
+  <img alt="Cadastro" src=".prints/login.png.png" width="100%">
 </p>
 
 ### Página Home
