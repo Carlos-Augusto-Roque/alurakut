@@ -16,7 +16,7 @@ Para logar , o usuário deve utilizar o seu username do GitHub e será direciona
 - Fazer login com o username do GitHub.
 
 <p align="center">
-  <img alt="Login" src=".prints/login.png.png" width="100%">
+  <img alt="Login" src="https://github.com/Carlos-Augusto-Roque/alurakut/blob/main/src/prints/login.png" width="100%">
 </p>
 
 ### Página Home
