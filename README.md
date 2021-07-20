@@ -27,6 +27,9 @@ Para logar , o usuário deve utilizar o seu username do GitHub e será direciona
 - Ver as comunidades que participa;
 - Criar uma nova comunidade;
 - Fazer logout.
+- Ver todos seus amigos (seguidores do GitHub);
+- Clicar em um amigo para ir até seu perfil;
+- Clicar no link abaixo do username para ir até seu perfil no GitHub.
 
 <p align="center">
   <img alt="Home" src="https://github.com/Carlos-Augusto-Roque/alurakut/blob/main/src/prints/home.png" width="100%">
@@ -34,9 +37,7 @@ Para logar , o usuário deve utilizar o seu username do GitHub e será direciona
 
 ### Página de amigos
 
-- Ver todos seus amigos (seguidores do GitHub);
-- Clicar em um amigo para ir até seu perfil;
-- Clicar no link abaixo do username para ir até seu perfil no GitHub.
+
 
 ## Acesso
 
