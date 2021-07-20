@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 
 export default async function githubAuth(req, res) {
+
   const { authorization } = req.headers;
 
   const tokenDecoded = jwt.decode(authorization);

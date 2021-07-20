@@ -6,7 +6,9 @@ export const ProfileRelationsBoxWrapper = styled(Box)`
     display: grid;
     grid-gap: 8px;
     grid-template-columns: 1fr 1fr 1fr; 
-    max-height: 220px;
+    /* max-height: 220px; */
+    max-height: ${(props) => (props.isShowingMoreItems ? '' : '220px')};
+    overflow: hidden;
     list-style: none;    
   }
   img {
@@ -49,5 +51,14 @@ export const ProfileRelationsBoxWrapper = styled(Box)`
       z-indeX: 1;
       background-image: linear-gradient(0deg,#00000073,transparent);
     }
+  }
+  .toggleButton {
+    background: none;
+    padding: 0;
+    font-size: 14px;
+    color: #539bf5;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top:10px;    
   }
 `; 

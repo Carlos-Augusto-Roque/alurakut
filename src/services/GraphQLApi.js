@@ -1,4 +1,4 @@
-// função que faz a chamada para buscar as comunidades já cadastradas no DatoCSM
+// função que faz a chamada para a api do DatoCMS buscar as comunidades já cadastradas
 export default {
 
   getCommunities: () => {
@@ -6,13 +6,14 @@ export default {
     return fetch(`https://graphql.datocms.com/`, {
       method: 'POST',
       headers: {
-        'Authorization': '6d2569e410f86a191a964cf0cd403b',
+        'Authorization': '6d2569e410f86a191a964cf0cd403b', // id fornecido no DatoCMS
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify({ "query": `query {
+      // corpo da requisição  - atributos de uma comunidade 
+      body: JSON.stringify({ "query": `query { 
         allCommunities{
-          title
+          title 
           id
           imageUrl
           creatorSlug

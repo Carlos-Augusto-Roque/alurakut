@@ -1,4 +1,3 @@
-// BFF
 import {SiteClient} from 'datocms-client'
 
 export default async function requestsReceiver(request,response) {
