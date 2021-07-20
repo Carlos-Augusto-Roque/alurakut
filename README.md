@@ -31,12 +31,11 @@ Para logar , o usuário deve utilizar o seu username do GitHub e será direciona
 - Clicar em um amigo para ir até seu perfil;
 - Clicar no link abaixo do username para ir até seu perfil no GitHub.
 
+<br>
+
 <p align="center">
   <img alt="Home" src="https://github.com/Carlos-Augusto-Roque/alurakut/blob/main/src/prints/home.png" width="100%">
 </p>
-
-### Página de amigos
-
 
 
 ## Acesso
