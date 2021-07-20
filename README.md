@@ -29,7 +29,7 @@ Para logar , o usuário deve utilizar o seu username do GitHub e será direciona
 - Fazer logout.
 
 <p align="center">
-  <img alt="Home" src=".github/home.png" width="100%">
+  <img alt="Home" src="./prints/home.png" width="100%">
 </p>
 
 ### Página de amigos
