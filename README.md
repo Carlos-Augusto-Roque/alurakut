@@ -16,7 +16,7 @@ Para logar , o usuário deve utilizar o seu username do GitHub e será direciona
 - Fazer login com o username do GitHub.
 
 <p align="center">
-  <img alt="Cadastro" src=".prints/login.png.png" width="100%">
+  <img alt="Login" src=".prints/login.png.png" width="100%">
 </p>
 
 ### Página Home
@@ -29,7 +29,7 @@ Para logar , o usuário deve utilizar o seu username do GitHub e será direciona
 - Fazer logout.
 
 <p align="center">
-  <img alt="Cadastro" src=".github/home.png" width="100%">
+  <img alt="Home" src=".github/home.png" width="100%">
 </p>
 
 ### Página de amigos
